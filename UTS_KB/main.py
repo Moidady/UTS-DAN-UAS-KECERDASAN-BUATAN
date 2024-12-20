@@ -8,7 +8,7 @@ from matplotlib import pyplot as plt
 
 
 # Load and preprocess images
-TrainPath = r"C:\UAS kecerdasan buatan\UTS_KB\TTD_A"
+TrainPath = r"TTD_A"
 categories = [
     'TTD AvavSam',
     'TTD FAHRIL ANTONIO HANDE',
@@ -151,6 +151,9 @@ accuracy = model.score(xtest, ytest)
 print("Model accuracy: ", accuracy)
 print("Prediction: ", categories[predict[0]])
 
+# Reshape the image back to its original dimensions
 mySign = xtest[0].reshape(50, 50, 3)
-plt.imshow(mySign, cmap='gray')
+# Convert the image from BGR to RGB format
+mySign = cv.cvtColor(mySign, cv.COLOR_BGR2RGB)
+plt.imshow(mySign)
 plt.show()
